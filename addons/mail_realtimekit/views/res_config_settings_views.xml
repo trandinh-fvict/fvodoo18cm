@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_mail_realtimekit" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.mail.realtimekit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="mail.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='rtc_settings']" position="inside">
+                <div class="row mt16">
+                    <div class="col-12 col-lg-6">
+                        <h3>Cloudflare RealtimeKit</h3>
+                        <div class="o_form_label o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="mail_realtimekit_enabled"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="mail_realtimekit_enabled"/>
+                                <div class="text-muted">
+                                    Enable Cloudflare RealtimeKit to provision calls and TURN credentials for Discuss.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_setting_box" attrs="{'invisible': [('mail_realtimekit_enabled', '=', False)]}">
+                            <div class="o_setting_left_pane"></div>
+                            <div class="o_setting_right_pane">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label for="mail_realtimekit_account_id"/>
+                                        <field name="mail_realtimekit_account_id" class="w-100"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="mail_realtimekit_app_id"/>
+                                        <field name="mail_realtimekit_app_id" class="w-100"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="mail_realtimekit_api_token"/>
+                                        <field name="mail_realtimekit_api_token" password="True" class="w-100"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="mail_realtimekit_api_base_url"/>
+                                        <field name="mail_realtimekit_api_base_url" class="w-100"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="mail_realtimekit_session_endpoint"/>
+                                        <field name="mail_realtimekit_session_endpoint" placeholder="{base}/accounts/{account_id}/calls/apps/{app_id}/sessions" class="w-100"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="mail_realtimekit_session_payload"/>
+                                        <field name="mail_realtimekit_session_payload" placeholder='{"type": "sfu"}' class="w-100" widget="text"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="mail_realtimekit_client_endpoint"/>
+                                        <field name="mail_realtimekit_client_endpoint" placeholder="{base}/accounts/{account_id}/calls/apps/{app_id}/sessions/{session_id}/clients" class="w-100"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="mail_realtimekit_client_payload"/>
+                                        <field name="mail_realtimekit_client_payload" class="w-100" widget="text"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="mail_realtimekit_turn_endpoint"/>
+                                        <field name="mail_realtimekit_turn_endpoint" placeholder="{base}/accounts/{account_id}/calls/apps/{app_id}/sessions/turn" class="w-100"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="mail_realtimekit_turn_ttl"/>
+                                        <field name="mail_realtimekit_turn_ttl" class="w-100"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="mail_realtimekit_turn_payload"/>
+                                        <field name="mail_realtimekit_turn_payload" class="w-100" widget="text"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="mail_realtimekit_client_disconnect_endpoint"/>
+                                        <field name="mail_realtimekit_client_disconnect_endpoint" placeholder="{base}/accounts/{account_id}/calls/apps/{app_id}/sessions/{session_id}/clients/{client_id}" class="w-100"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
